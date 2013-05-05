@@ -6,4 +6,4 @@ Its idea comes from [TwiTalker](https://code.google.com/p/twitalker/). And TwiTa
 
 ## Library
 [python-twitter](https://github.com/bear/python-twitter)  
-[simpleauth](https://github.com/crhym3/simpleauth)  
+[python-oauth2](https://github.com/simplegeo/python-oauth2)

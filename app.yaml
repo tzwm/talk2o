@@ -21,7 +21,7 @@ inbound_services:
 
 handlers:
 - url: /_ah/xmpp/message/chat/
-  script: main.py
+  script: xmpp_handler.py
 
 - url: /.*
-  script: oauth.py
+  script: main.py

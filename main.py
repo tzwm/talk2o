@@ -1,28 +1,16 @@
-import lib.twitter
+from google.appengine.ext import webapp
+from google.appengine.ext.webapp.util import run_wsgi_app
+from webapp2 import WSGIApplication, Route
 
-import webapp2
+routes = [
+  Route('/', handler='handlers.RootHandler')
+]
 
-from google.appengine.api import xmpp
-from google.appengine.api import users
-from google.appengine.ext import db
- 
+app = WSGIApplication(routes, debug=True)
 
-import db_model
+def main():
+    run_wsgi_app(app)
 
-class MainPage(webapp2.RequestHandler):
-
-    def post(self):
-        message = xmpp.Message(self.request.POST)
-
-        user = db_model.Account(email=message.sender)
-        user.put()
-
-        users = db.GqlQuery("SELECT * FROM Account", email=message.sender)
-        message.reply(str(users.count()))
-        for user in users:
-          message.reply(str(user.createdtime))
-
-        
-app = webapp2.WSGIApplication([('/_ah/xmpp/message/chat/', MainPage)],
-                              debug=True)
-                              
+if __name__ == '__main__':
+    main()
+    

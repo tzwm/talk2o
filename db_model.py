@@ -1,6 +1,6 @@
 from google.appengine.ext import db
 
-class Account(db.Model):
+class Client(db.Model):
 	email = db.StringProperty(required=True)
 	actoken_key = db.StringProperty()
 	actoken_secret = db.StringProperty()
