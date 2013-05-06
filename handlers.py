@@ -1,13 +1,17 @@
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
+from google.appengine.api import users
 
 class RootHandler(webapp.RequestHandler):
     def get(self):
-    	try:
-            first = int(self.request.get('first'))
-            second = int(self.request.get('second'))
+    	user = users.get_current_user()
+    	if user:
+    		greeting = ("Welcome, %s! (<a href=\"%s\">sign out</a>)" %
+    					(user.nickname(), users.create_logout_url("/")))
+    	else:
+    		greeting = ("<a href=\"%s\">Sign in</a>" % 
+    					users.create_login_url("/"))
 
-            self.response.out.write("<html><body><p>%d + %d = %d</p></body></html>" %
-                                    (first, second, first + second))
-        except (TypeError, ValueError):
-            self.response.out.write("<html><body><p>Invalid inputs</p></body></html>")
+    	self.response.out.write("<html><body>%s</body></html>" % greeting)
+
+    			
