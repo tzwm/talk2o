@@ -19,7 +19,7 @@ resp, content = client.request(request_token_url, "GET")
 if resp['status'] != '200':
     raise Exception("Invalid response %s." % resp['status'])
 
-request_token = dict(urlparse.parse_qsl(content))x
+request_token = dict(urlparse.parse_qsl(content))
 
 print "Request Token:"
 print "    - oauth_token        = %s" % request_token['oauth_token']
