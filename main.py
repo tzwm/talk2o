@@ -5,6 +5,7 @@ from webapp2 import WSGIApplication, Route
 import config
 
 routes = [
+  Route('/_ah/xmpp/message/chat/', handler='xmpp_handler.XMPPHandler'),
   Route('/', handler='handlers.RootHandler'),
   Route('/twitter/oauth/', handler='handlers.TwitterHandler:auth'),
   Route('/twitter/callback/', handler='handlers.TwitterHandler:callback')

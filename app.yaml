@@ -20,8 +20,5 @@ inbound_services:
 - xmpp_message
 
 handlers:
-- url: /_ah/xmpp/message/chat/
-  script: xmpp_handler.py
-
 - url: /.*
   script: main.py

@@ -46,7 +46,7 @@ class RootHandler(BaseHandler):
             twitter_actoken_key = clients.get().twitter_actoken_key
             twitgreeting = ""
             if twitter_actoken_key:
-                twitgreeting = ("twitter auth ok."))
+                twitgreeting = ("twitter auth ok.")
             else:
                 twitgreeting = ('<a href="/twitter/oauth/">twitter:sign in</a>')
         else:
