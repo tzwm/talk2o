@@ -19,8 +19,8 @@ class XMPPHandler(webapp.RequestHandler):
         access_token_key = clients.get().twitter_actoken_key
         access_token_secret = clients.get().twitter_actoken_secret
 
-        api = twitter.Api(consumer_key=config.CONSUMER_KEY,
-                          consumer_secret=config.CONSUMER_SECRET,
+        api = twitter.Api(consumer_key=config.TWITTER_CONSUMER_KEY,
+                          consumer_secret=config.TWITTER_CONSUMER_SECRET,
                           access_token_key=access_token_key,
                           access_token_secret=access_token_secret)  
         api.PostUpdate(message.body)

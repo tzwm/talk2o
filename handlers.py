@@ -59,17 +59,17 @@ class RootHandler(BaseHandler):
 
 class TwitterHandler(BaseHandler):
     def auth(self):
-        consumer = oauth.Consumer(config.CONSUMER_KEY, config.CONSUMER_SECRET)
+        consumer = oauth.Consumer(config.TWITTER_CONSUMER_KEY, config.TWITTER_CONSUMER_SECRET)
         client = oauth.Client(consumer)
 
-        resp, content = client.request(config.REQUEST_TOKEN_URL, "GET")
+        resp, content = client.request(config.TWITTER_REQUEST_TOKEN_URL, "GET")
         if resp['status'] != '200':
             raise Exception("Invalid response %s." % resp['status'])
         request_token = dict(urlparse.parse_qsl(content))
 
         self.session['req_token'] = request_token
 
-        self.redirect('%s?oauth_token=%s' % (config.AUTHORIZE_URL, request_token['oauth_token']))
+        self.redirect('%s?oauth_token=%s' % (config.TWITTER_AUTHORIZE_URL, request_token['oauth_token']))
 
 
     def callback(self):
@@ -78,10 +78,10 @@ class TwitterHandler(BaseHandler):
         token = oauth.Token(request_token['oauth_token'],
                             request_token['oauth_token_secret'])
         token.set_verifier(verifier)
-        consumer = oauth.Consumer(config.CONSUMER_KEY, config.CONSUMER_SECRET)
+        consumer = oauth.Consumer(config.TWITTER_CONSUMER_KEY, config.TWITTER_CONSUMER_SECRET)
         client = oauth.Client(consumer, token)
 
-        resp, content = client.request(config.ACCESS_TOKEN_URL, "POST")
+        resp, content = client.request(config.TWITTER_ACCESS_TOKEN_URL, "POST")
         access_token = dict(urlparse.parse_qsl(content))
 
         user = users.get_current_user()
