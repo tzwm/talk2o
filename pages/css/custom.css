@@ -1,0 +1,39 @@
+html{
+    overflow-y: scroll;
+}
+
+body{
+    padding-top: 60px;
+}
+
+section{
+    overflow: auto;
+}
+
+textarea{
+    resize: vertical;
+}
+
+.navbar-text.pull-right{
+    float: none;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#logo{
+    float: left;
+    margin-right: 10px;
+    font-size: 1.7em;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    padding-top: 9px;
+    font-weight: bold;
+    line-height: 1;
+
+    &:hover {
+        color: #fff;
+        text-decoration: none;
+    }
+}
+

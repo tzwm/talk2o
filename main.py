@@ -22,7 +22,6 @@ app = WSGIApplication(routes, config=app_config, debug=True)
 
 
 def main():
-
     run_wsgi_app(app)
 
 
